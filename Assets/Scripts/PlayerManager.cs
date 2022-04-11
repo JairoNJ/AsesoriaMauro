@@ -12,8 +12,9 @@ public class PlayerManager : MonoBehaviour
     Vector3 playerInput;
     Vector3 movePlayer;
 
+    //Accede al script levelChager para validar el cambio de escena
     [SerializeField]
-    private ManagerScene managerScene;
+    private LevelChanger levelChanger;
 
 
     Animator playerAnimatorController;
@@ -25,7 +26,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        managerScene = FindObjectOfType<ManagerScene>().GetComponent<ManagerScene>();
+        levelChanger = FindObjectOfType<LevelChanger>().GetComponent<LevelChanger>();
+
     }
 
     // Start is called before the first frame update
@@ -72,22 +74,22 @@ public class PlayerManager : MonoBehaviour
     {
         if(other.gameObject.tag == "door1")
         {
-            managerScene.CallScene1();
+            levelChanger.FadeToNextLevel_1();
             Debug.Log("TRIGUER OK!");
         }
         else if(other.gameObject.tag == "door2")
         {
-            managerScene.CallScene2();
+            levelChanger.FadeToNextLevel_2();
             Debug.Log("TRIGUER OK!");
         }
         else if (other.gameObject.tag == "door3")
         {
-            managerScene.CallScene3();
+            levelChanger.FadeToNextLevel_3();
             Debug.Log("TRIGUER OK!");
         }
         else if (other.gameObject.tag == "door4")
         {
-            managerScene.CallScene4();
+            levelChanger.FadeToNextLevel_0();
             Debug.Log("TRIGUER OK!");
         }
         else
