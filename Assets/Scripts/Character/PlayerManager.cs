@@ -12,23 +12,12 @@ public class PlayerManager : MonoBehaviour
     Vector3 playerInput;
     Vector3 movePlayer;
 
-    //Accede al script levelChager para validar el cambio de escena
-    [SerializeField]
-    private LevelChanger levelChanger;
-
-
     Animator playerAnimatorController;
-
 
     public Camera mainCamera; 
     private Vector3 camForward;
     private Vector3 camRight;
 
-    private void Awake()
-    {
-        levelChanger = FindObjectOfType<LevelChanger>().GetComponent<LevelChanger>();
-
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -70,33 +59,6 @@ public class PlayerManager : MonoBehaviour
         camRight = camRight.normalized;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "door1")
-        {
-            levelChanger.FadeToNextLevel_1();
-            Debug.Log("TRIGUER OK!");
-        }
-        else if(other.gameObject.tag == "door2")
-        {
-            levelChanger.FadeToNextLevel_2();
-            Debug.Log("TRIGUER OK!");
-        }
-        else if (other.gameObject.tag == "door3")
-        {
-            levelChanger.FadeToNextLevel_3();
-            Debug.Log("TRIGUER OK!");
-        }
-        else if (other.gameObject.tag == "door4")
-        {
-            levelChanger.FadeToNextLevel_0();
-            Debug.Log("TRIGUER OK!");
-        }
-        else
-        {
-            return;
-        }
-    }
 
     private void OnAnimatorMove()
     {

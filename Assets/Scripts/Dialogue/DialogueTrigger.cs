@@ -13,4 +13,13 @@ public class DialogueTrigger : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+           this.GetComponent<DialogueTrigger>().TriggerDialogue();
+            Debug.Log("NAME >> " + other.tag);
+        }
+    }
+
 }
